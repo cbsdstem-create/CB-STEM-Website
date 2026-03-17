@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CB STEM | About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4fd6;
+            --primary-dark: #1239a8;
+            --primary-light: #e8effe;
+            --accent: #22d3a5;
+            --accent-dark: #0fb389;
+            --text: #111827;
+            --muted: #6b7280;
+            --bg: #f9fafb;
+            --surface: #ffffff;
+            --border: rgba(0,0,0,0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* ── Header ── */
+        header {
+            background: var(--primary);
+            padding: 0.9rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo, .logo:visited {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+        .logo-text {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .logo img {
+            height: 38px;
+            width: auto;
+            display: block;
+        }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-bottom: 2px;
+            flex-shrink: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+        }
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: #fff; }
+
+        /* Dropdown */
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.75rem);
+            left: 0;
+            background: var(--primary-dark);
+            border-radius: 10px;
+            padding: 0.4rem 0;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.875rem;
+        }
+        .dropdown-content a:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Volunteer button */
+        .volunteer-btn {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1.1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+        .volunteer-btn:hover { background: var(--accent-dark); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 62px;
+                right: 1.5rem;
+                background: var(--primary-dark);
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 1.25rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            }
+            nav.active { display: flex; }
+            .hamburger { display: flex; }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                min-width: unset;
+                padding: 0.25rem 0 0 0.75rem;
+            }
+        }
+
+        /* ── Main ── */
+        main {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        section { margin-bottom: 4rem; }
+
+        /* Page header banner */
+        .page-banner {
+            background: var(--primary);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; right: -60px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(34,211,165,0.08);
+        }
+        .page-banner h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+        .page-banner p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.72);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.75;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mission section */
+        #about-mission {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2.5rem 2.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        #about-mission h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        #about-mission h2 span {
+            color: var(--primary);
+        }
+        #about-mission p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 780px;
+            margin: 0 auto;
+            line-height: 1.85;
+        }
+
+        /* How We Started */
+        #how-we-started h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        #how-we-started h2 span {
+            color: var(--primary);
+        }
+
+        .story-block {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .story-block p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.85;
+        }
+        .story-block p + p {
+            margin-top: 1rem;
+        }
+
+        /* Accent quote line */
+        .story-block.accented {
+            border-left: 4px solid var(--accent);
+            border-radius: 0 20px 20px 0;
+        }
+
+        /* Past images grid */
+        .past-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .past-images img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .past-images img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 640px) {
+            .past-images { grid-template-columns: 1fr; }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 2rem 0 1.5rem;
+            font-size: 0.85rem;
+        }
+        footer span { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="claude_home.html" class="logo">
+            
+            <img src="CB_STEM_LOGO.PNG" alt="CB STEM Logo" onerror="this.style.display='none'">
+            <span class="logo-text">CB STEM</span>
+        </a>
+
+        <nav id="nav">
+            <a href="claude_home.html">Home Page</a>
+            <a href="claude_about.html">About Us</a>
+            <a href="claude_ourteam.html">Our Team</a>
+            <a href="claude_events.html">Events</a>
+            <a href="claude_contact.html">Contact</a>
+            
+        </nav>
+
+        <div style="display:flex;align-items:center;gap:1rem;">
+            <button class="volunteer-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeMt3xXZq7AGVlKg1EeYwjeqRcQEC6OghL0POR7E-f1oLQ4Pg/viewform','_blank')">
+                Become a Volunteer
+            </button>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Page Banner -->
+        <div class="page-banner">
+            <h1>About CB STEM</h1>
+            <p>A student-led initiative making STEM exciting, accessible, and impactful for everyone.</p>
+        </div>
+
+        <!-- Mission -->
+        <section id="about-mission">
+            <h2>Our <span>Mission</span></h2>
+            <p>
+                Here at CB STEM, our student volunteers are on a mission to make STEM exciting and accessible for everyone!
+                From hands-on experiments and engaging masterclasses to internship programs and community projects, we provide opportunities
+                for students to explore, learn, and grow their skills. Whether you're a STEM enthusiast or just curious to try something new,
+                CB STEM is all about building a supportive, inclusive, and fun environment where learning never stops.
+                Join us and see what you can create, discover, and achieve!
+            </p>
+        </section>
+
+        <!-- How We Started -->
+        <section id="how-we-started">
+            <h2>How We <span>Started</span></h2>
+
+            <div class="story-block accented">
+                <p>
+                    It all started with a realization: many students at Central Bucks were curious about STEM but lacked the resources
+                    and opportunities to fully explore it. Our founder, Sanjana Chamarty, a junior at Central Bucks South High School, experienced
+                    this firsthand while competing in Technology Student Association (TSA) conferences during the 2024–25 school year.
+                    By the time she reached the national level, the challenges became clear — over $1,000 spent on competitions and events,
+                    limited access to resources, and underrepresentation in STEM initiatives. By partnering with Co-Founder Adhavan Balachandar, 
+                    they were able to create CB STEM and provide students with the resources to explore their passions in STEM.
+                </p>
+            </div>
+
+            <div class="past-images">
+                <img src="Comp1.HEIC" alt="Past Competition 1">
+                <img src="Comp2.HEIC" alt="Past Competition 2">
+                <img src="Comp3.HEIC" alt="Past Competition 3">
+            </div>
+
+            <div class="story-block">
+                <p>
+                    Rather than accepting these barriers, she decided to act. Inspired by her own journey and a desire to make STEM
+                    more equitable, she brought together a group of like-minded peers. What began as small tutoring sessions and informal
+                    projects soon grew into CB STEM — a student-led initiative dedicated to strengthening STEM programs, creating
+                    hands-on experiences, and ensuring students have access to the tools and opportunities they deserve.
+                </p>
+                <p>
+                    Today, our volunteers continue to carry that mission forward, hosting workshops, competitions, and community projects
+                    that make STEM fun, accessible, and impactful for students across our school and beyond.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2025 CB STEM. All rights reserved. &nbsp;·&nbsp; Made with <span>♥</span> for students.
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        hamburger.addEventListener('click', () => nav.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

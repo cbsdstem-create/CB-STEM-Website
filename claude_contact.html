@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CB STEM | Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4fd6;
+            --primary-dark: #1239a8;
+            --primary-light: #e8effe;
+            --accent: #22d3a5;
+            --accent-dark: #0fb389;
+            --text: #111827;
+            --muted: #6b7280;
+            --bg: #f9fafb;
+            --surface: #ffffff;
+            --border: rgba(0,0,0,0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* ── Header ── */
+        header {
+            background: var(--primary);
+            padding: 0.9rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo, .logo:visited {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+        .logo-text {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .logo img {
+            height: 38px;
+            width: auto;
+            display: block;
+        }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-bottom: 2px;
+            flex-shrink: 0;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+        }
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: #fff; }
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.75rem);
+            left: 0;
+            background: var(--primary-dark);
+            border-radius: 10px;
+            padding: 0.4rem 0;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.875rem;
+        }
+        .dropdown-content a:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .volunteer-btn {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1.1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+        .volunteer-btn:hover { background: var(--accent-dark); }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+        }
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 62px;
+                right: 1.5rem;
+                background: var(--primary-dark);
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 1.25rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            }
+            nav.active { display: flex; }
+            .hamburger { display: flex; }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                min-width: unset;
+                padding: 0.25rem 0 0 0.75rem;
+            }
+        }
+
+        /* ── Main ── */
+        main {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: var(--primary);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; right: -60px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(34,211,165,0.08);
+        }
+        .page-banner h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+        .page-banner p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.72);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.75;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Two-column layout ── */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (max-width: 760px) {
+            .contact-layout { grid-template-columns: 1fr; }
+        }
+
+        /* ── Info column ── */
+        .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+
+        .info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .info-card h3 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 0.85rem;
+        }
+        .info-row:last-child { margin-bottom: 0; }
+
+        .info-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .info-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .info-label {
+            font-size: 0.78rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .info-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .info-value a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .info-value a:hover { text-decoration: underline; }
+
+        /* Topic pills */
+        .topics { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .topic-pill {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+        }
+
+        /* ── Form column ── */
+        .contact-form-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.25rem;
+        }
+        .contact-form-card h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        .contact-form-card .form-sub {
+            font-size: 0.875rem;
+            color: var(--muted);
+            margin-bottom: 1.75rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 560px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        .field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+        .field label {
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .field input,
+        .field select,
+        .field textarea {
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26,79,214,0.1);
+        }
+        .field textarea { resize: vertical; min-height: 130px; }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+        .submit-btn:hover { background: var(--primary-dark); }
+
+        /* Success message */
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .success-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #d1fae5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        .success-icon svg {
+            width: 26px; height: 26px;
+            stroke: #059669;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .success-msg h3 { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 0.4rem; }
+        .success-msg p  { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 2rem 0 1.5rem;
+            font-size: 0.85rem;
+        }
+        footer span { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="claude_home.html" class="logo">
+            
+            <img src="CB_STEM_LOGO.PNG" alt="CB STEM Logo" onerror="this.style.display='none'">
+            <span class="logo-text">CB STEM</span>
+        </a>
+        <nav id="nav">
+            <a href="claude_home.html">Home Page</a>
+            <a href="claude_about.html">About Us</a>
+            <a href="claude_ourteam.html">Our Team</a>
+            <a href="claude_events.html">Events</a>
+            <a href="claude_contact.html">Contact</a>
+            
+        </nav>
+        <div style="display:flex;align-items:center;gap:1rem;">
+            <button class="volunteer-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeMt3xXZq7AGVlKg1EeYwjeqRcQEC6OghL0POR7E-f1oLQ4Pg/viewform','_blank')">
+                Become a Volunteer
+            </button>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Banner -->
+        <div class="page-banner">
+            <h1>Get in Touch</h1>
+            <p>Have a question, want to partner with us, or just want to say hi? We'd love to hear from you.</p>
+        </div>
+
+        <div class="contact-layout">
+
+            <!-- Left: Info -->
+            <div class="contact-info">
+
+                <div class="info-card">
+                    <h3>Contact Details</h3>
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Email</div>
+                            <div class="info-value"><a href="mailto:cbsdstem@gmail.com">cbsdstem@gmail.com</a></div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Instagram</div>
+                            <div class="info-value"><a href="https://instagram.com/cb_stem" target="_blank">@cb_stem</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>We Can Help With</h3>
+                    <div class="topics">
+                        <span class="topic-pill">General Inquiries</span>
+                        <span class="topic-pill">Volunteering</span>
+                        <span class="topic-pill">Sponsorship</span>
+                        <span class="topic-pill">Partnerships</span>
+                    </div>
+                </div>
+
+                <div class="info-card" style="border-left: 4px solid var(--accent); border-radius: 0 16px 16px 0;">
+                    <h3>Response Time</h3>
+                    <p style="font-size:0.9rem; color:var(--muted); line-height:1.7;">
+                        We typically respond within <strong style="color:var(--text);">1–2 business days</strong>. 
+                        For urgent matters, reach us directly at 
+                        <a href="mailto:cbsdstem@gmail.com" style="color:var(--primary); font-weight:600;">cbsdstem@gmail.com</a>.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Right: Form -->
+            <div class="contact-form-card">
+                <h2>Send Us a Message</h2>
+                <p class="form-sub">Fill out the form below and we'll get back to you shortly.</p>
+
+                <!-- Formspree form — replace YOUR_FORM_ID with your Formspree endpoint ID -->
+                <form id="contact-form" action="https://formspree.io/f/xdawwrpw" method="POST">
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first_name" placeholder="Jane" required>
+                        </div>
+                        <div class="field">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last_name" placeholder="Smith" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="topic">Topic</label>
+                        <select id="topic" name="topic" required>
+                            <option value="" disabled selected>Select a topic...</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="volunteer">Volunteering Question</option>
+                            <option value="sponsorship">Sponsorship / Partnership</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                    </div>
+
+                    <!-- Hidden field so replies go to the right address -->
+                    <input type="hidden" name="_replyto" value="cbsdstem@gmail.com">
+
+                    <button type="submit" class="submit-btn">Send Message →</button>
+                </form>
+
+                <!-- Success message (shown after submit) -->
+                <div class="success-msg" id="success-msg">
+                    <div class="success-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Message Sent!</h3>
+                    <p>Thanks for reaching out. We'll get back to you within 1–2 business days.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 CB STEM. All rights reserved. &nbsp;·&nbsp; Made with <span>♥</span> for students.
+    </footer>
+
+    <script>
+        // Hamburger
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        hamburger.addEventListener('click', () => nav.classList.toggle('active'));
+
+        // Form success state
+        const form = document.getElementById('contact-form');
+        const successMsg = document.getElementById('success-msg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+            } else {
+                alert('Oops! Something went wrong. Please email us directly at cbsdstem@gmail.com.');
+            }
+        });
+    </script>
+</body>
+</html>
