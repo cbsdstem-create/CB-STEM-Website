@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CB STEM | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #1a4fd6;
@@ -16,10 +18,14 @@
             --muted: #6b7280;
             --bg: #f9fafb;
             --surface: #ffffff;
-            --border: rgba(0,0,0,0.08);
+            --border: rgba(0, 0, 0, 0.08);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -39,26 +45,30 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo, .logo:visited {
+        .logo,
+        .logo:visited {
             display: flex;
             align-items: center;
             gap: 0.6rem;
             text-decoration: none;
         }
+
         .logo-text {
             font-size: 1.45rem;
             font-weight: 800;
             color: #fff;
             letter-spacing: 0.5px;
         }
+
         .logo img {
             height: 38px;
             width: auto;
             display: block;
         }
+
         .logo-dot {
             width: 8px;
             height: 8px;
@@ -74,16 +84,23 @@
             align-items: center;
             position: relative;
         }
+
         nav a {
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.2s;
         }
-        nav a:hover { color: #fff; }
 
-        .dropdown { position: relative; }
+        nav a:hover {
+            color: #fff;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
@@ -93,19 +110,24 @@
             border-radius: 10px;
             padding: 0.4rem 0;
             min-width: 180px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         }
+
         .dropdown-content a {
             display: block;
             padding: 0.5rem 1rem;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 0.875rem;
         }
+
         .dropdown-content a:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             color: #fff;
         }
-        .dropdown:hover .dropdown-content { display: block; }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
         .volunteer-btn {
             background: var(--accent);
@@ -119,7 +141,10 @@
             font-family: inherit;
             transition: background 0.2s;
         }
-        .volunteer-btn:hover { background: var(--accent-dark); }
+
+        .volunteer-btn:hover {
+            background: var(--accent-dark);
+        }
 
         .hamburger {
             display: none;
@@ -127,6 +152,7 @@
             cursor: pointer;
             gap: 5px;
         }
+
         .hamburger span {
             width: 26px;
             height: 2.5px;
@@ -146,10 +172,17 @@
                 gap: 0.75rem;
                 padding: 1.25rem 1.5rem;
                 border-radius: 12px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             }
-            nav.active { display: flex; }
-            .hamburger { display: flex; }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
             .dropdown-content {
                 position: static;
                 box-shadow: none;
@@ -175,22 +208,32 @@
             margin-bottom: 2.5rem;
             background: linear-gradient(135deg, #1a4fd6 0%, #0ea5e9 100%);
         }
+
         .slides img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 20%; /* ← adjust this % to reframe all images. lower = show more top, higher = show more bottom */
+            object-position: center 20%;
+            /* ← adjust this % to reframe all images. lower = show more top, higher = show more bottom */
             display: none;
             border-radius: 20px;
         }
+
         .slides img.active {
             display: block;
             animation: fadeIn 0.8s ease;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         .slider-dots {
             position: absolute;
             bottom: 1rem;
@@ -199,13 +242,15 @@
             display: flex;
             gap: 6px;
         }
+
         .slider-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.45);
+            background: rgba(255, 255, 255, 0.45);
             transition: all 0.3s;
         }
+
         .slider-dot.active {
             background: #fff;
             width: 20px;
@@ -218,6 +263,7 @@
             margin-bottom: 2.5rem;
             padding: 0 2rem;
         }
+
         #home-about p {
             font-size: 1.05rem;
             color: var(--muted);
@@ -233,6 +279,7 @@
             gap: 1rem;
             margin-bottom: 2.5rem;
         }
+
         .stat-card {
             background: var(--surface);
             border-radius: 16px;
@@ -241,16 +288,19 @@
             border: 1px solid var(--border);
             transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .stat-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(26,79,214,0.1);
+            box-shadow: 0 8px 24px rgba(26, 79, 214, 0.1);
         }
+
         .stat-number {
             font-size: 2.6rem;
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
         }
+
         .stat-label {
             font-size: 0.85rem;
             color: var(--muted);
@@ -267,17 +317,20 @@
             border: 1px solid var(--border);
             text-align: center;
         }
+
         #sponsors h2 {
             font-size: 1.6rem;
             font-weight: 800;
             color: var(--text);
             margin-bottom: 0.35rem;
         }
+
         .section-sub {
             font-size: 0.9rem;
             color: var(--muted);
             margin-bottom: 2rem;
         }
+
         .sponsor-logos {
             display: flex;
             justify-content: center;
@@ -285,6 +338,7 @@
             flex-wrap: wrap;
             align-items: center;
         }
+
         .sponsor-logos img {
             height: 72px;
             width: auto;
@@ -292,6 +346,7 @@
             filter: grayscale(20%);
             transition: filter 0.2s, transform 0.2s;
         }
+
         .sponsor-logos img:hover {
             filter: grayscale(0%);
             transform: scale(1.05);
@@ -307,23 +362,34 @@
             position: relative;
             overflow: hidden;
         }
+
         .hero::before {
             content: '';
             position: absolute;
-            top: -80px; right: -80px;
-            width: 280px; height: 280px;
+            top: -80px;
+            right: -80px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.04);
         }
+
         .hero::after {
             content: '';
             position: absolute;
-            bottom: -100px; left: -60px;
-            width: 320px; height: 320px;
+            bottom: -100px;
+            left: -60px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
-            background: rgba(34,211,165,0.07);
+            background: rgba(34, 211, 165, 0.07);
         }
-        .hero-content { position: relative; z-index: 1; }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
         .hero-content h1 {
             font-size: 2.4rem;
             font-weight: 800;
@@ -331,21 +397,24 @@
             margin-bottom: 1rem;
             line-height: 1.2;
         }
+
         .hero-content p {
             font-size: 1rem;
-            color: rgba(255,255,255,0.72);
+            color: rgba(255, 255, 255, 0.72);
             margin-bottom: 2rem;
             max-width: 540px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.75;
         }
+
         .hero-buttons {
             display: flex;
             justify-content: center;
             gap: 0.75rem;
             flex-wrap: wrap;
         }
+
         .btn-accent {
             background: var(--accent);
             color: #fff;
@@ -358,12 +427,16 @@
             font-family: inherit;
             transition: background 0.2s;
         }
-        .btn-accent:hover { background: var(--accent-dark); }
+
+        .btn-accent:hover {
+            background: var(--accent-dark);
+        }
+
         .btn-ghost {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
             padding: 0.75rem 1.6rem;
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 10px;
             font-weight: 700;
             font-size: 0.9rem;
@@ -371,7 +444,10 @@
             font-family: inherit;
             transition: background 0.2s;
         }
-        .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
 
         /* Footer */
         footer {
@@ -380,9 +456,13 @@
             padding: 2rem 0 1.5rem;
             font-size: 0.85rem;
         }
-        footer span { color: var(--accent); }
+
+        footer span {
+            color: var(--accent);
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -413,7 +493,7 @@
         <div class="slider">
             <div class="slides">
                 <!-- ✅ Only the FIRST image gets class="active" — never add it to the others -->
-                <img src="image1.PNG" style="object-position: center 70%;"class="active" alt="CB STEM Image 1">
+                <img src="image1.PNG" style="object-position: center 70%;" class="active" alt="CB STEM Image 1">
                 <img src="Image2.jpg" alt="CB STEM Image 2">
                 <img src="Image3.jpg" alt="CB STEM Image 3">
                 <img src="Image4.jpg" alt="CB STEM Image 4">
@@ -434,7 +514,7 @@
         <!-- Impact Stats -->
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-number">6</div>
+                <div class="stat-number">7</div>
                 <div class="stat-label">Sponsors</div>
             </div>
             <div class="stat-card">
@@ -452,11 +532,11 @@
             <h2>Our Sponsors</h2>
             <p class="section-sub">Proudly supported by local businesses and community partners</p>
             <div class="sponsor-logos">
-                <img src="ModPizza.png"       alt="Mod Pizza">
-                <img src="DuckDonuts.png"     alt="Duck Donuts">
-                <img src="CafeWithSoul.png"   alt="Cafe With Soul">
-                <img src="NinasWaffles.jpg"   alt="Nina's Waffles">
-                <img src="SirenRecords.PNG"   alt="Siren Records">
+                <img src="ModPizza.png" alt="Mod Pizza">
+                <img src="DuckDonuts.png" alt="Duck Donuts">
+                <img src="CafeWithSoul.png" alt="Cafe With Soul">
+                <img src="NinasWaffles.jpg" alt="Nina's Waffles">
+                <img src="SirenRecords.PNG" alt="Siren Records">
                 <img src="EvolutionCandy.PNG" alt="Evolution Candy">
                 <img src="Mercedes.png" alt="Mercedes Benz of Doylestown">
             </div>
@@ -468,10 +548,11 @@
                 <h1>Empowering Students Through STEM</h1>
                 <p>Explore tutoring, volunteering, masterclasses, and more to grow your STEM journey.</p>
                 <div class="hero-buttons">
-                    <button class="btn-accent" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeMt3xXZq7AGVlKg1EeYwjeqRcQEC6OghL0POR7E-f1oLQ4Pg/viewform','_blank')">
+                    <button class="btn-accent"
+                        onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeMt3xXZq7AGVlKg1EeYwjeqRcQEC6OghL0POR7E-f1oLQ4Pg/viewform','_blank')">
                         Become a Volunteer
                     </button>
-                    
+
                 </div>
             </div>
         </section>
@@ -493,9 +574,9 @@
         });
 
         // Image slider with dots
-        const slides   = document.querySelectorAll('.slides img');
+        const slides = document.querySelectorAll('.slides img');
         const dotsWrap = document.getElementById('slider-dots');
-        let current    = 0;
+        let current = 0;
 
         // Build dots
         slides.forEach((_, i) => {
@@ -515,4 +596,5 @@
         setInterval(() => goTo(current + 1), 3500);
     </script>
 </body>
+
 </html>
